@@ -1,5 +1,5 @@
 ﻿using System;
-
+using CalculatorLibrary;
 namespace Calculadora
 {
     internal class Program
@@ -12,6 +12,8 @@ namespace Calculadora
             Console.WriteLine("CALCULATOR\r");
             Console.WriteLine("-------------\n");
 
+            //instanciar a classe
+            Calculator calculator = new Calculator();
             while (!fimDeJogo) 
             {
                 //declarando variaveis
@@ -61,9 +63,10 @@ namespace Calculadora
                 try
                 {
                     //instanciei uma classe em uma variavel
-                    result = Calculator.Operacao(cleanNum1, cleanNum2, op);
+                    result = calculator.Operacao(cleanNum1, cleanNum2, op);
 
                     //resultado inexistente
+                    //segunda verificacao de erro
                     if (double.IsNaN(result))
                     {
                         Console.WriteLine("This operation will result in a mathematical error.\n");
@@ -83,6 +86,7 @@ namespace Calculadora
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
+            calculator.Finish();
             return;
         }
     }
